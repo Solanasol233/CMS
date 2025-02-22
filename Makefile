@@ -13,7 +13,7 @@ out_dir:
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-tm: $(OBJ_CMS) out_dir
+cms: $(OBJ_CMS) out_dir
 	#$(CC) $(OBJ_TM) $(LINK) $(CFLAGS) -o $(OUT_DIR)/$@
 	$(CC) $(OBJ_CMS) $(CFLAGS) -o $(OUT_DIR)/$@
 	./build/cms
