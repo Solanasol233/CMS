@@ -17,35 +17,36 @@ void addContact(int argc, char* argv[])
 {
 	int index = info.totalContacts;
 	contacts[index].ID = index +1;
-	info.totalContacts++;
 
-	for (int i = 2; i < argc; i++)
+	for (int i = 2; i < argc; i++)	/*i start at 2 because argv[2] is the first argument after -ac*/
 	{
 		if (strcmp(argv[i], "-fn") == 0 || strcmp(argv[i], "-firstname") == 0)
 		{
-			strcpy(contacts[info.totalContacts].fn, argv[i + 1]);
+			strcpy(contacts[index].fn, argv[i + 1]);
 			printf("[%sDEBUG%s] fn: %s\n", KGRN, KNRM, contacts[index].fn);
 		} else
 		if (strcmp(argv[i], "-ln") == 0 || strcmp(argv[i], "-lastname") == 0)
 		{
-			strcpy(contacts[info.totalContacts].ln, argv[i + 1]);
+			strcpy(contacts[index].ln, argv[i + 1]);
 			printf("[%sDEBUG%s] ln: %s\n", KGRN, KNRM, contacts[index].ln);
 		} else
 		if (strcmp(argv[i], "-e") == 0 || strcmp(argv[i], "-email") == 0)
 		{
-			strcpy(contacts[info.totalContacts].email, argv[i + 1]);
+			strcpy(contacts[index].email, argv[i + 1]);
 			printf("[%sDEBUG%s] email: %s\n", KGRN, KNRM, contacts[index].email);
 		} else
 		if (strcmp(argv[i], "-pn") == 0 || strcmp(argv[i], "-phonenumber") == 0)
 		{
-			strcpy(contacts[info.totalContacts].phonenum, argv[i + 1]);
+			strcpy(contacts[index].phonenum, argv[i + 1]);
 			printf("[%sDEBUG%s] phone: %s\n", KGRN, KNRM, contacts[index].phonenum);
 		}
 	}
+	info.totalContacts++;
 }
 
 int main(int argc, char *argv[])
 {
+	memset(contacts, 0, sizeof(contacts));
 	info.totalContacts = 0;
 	printf("[%sDEBUG%s] argc: %d\n", KGRN, KNRM, argc);
 
